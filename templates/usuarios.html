@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <script>
+        // Função para excluir o usuário via POST com _method=DELETE
+        function deleteUser(userId) {
+            if (confirm("Tem certeza que deseja excluir este usuário?")) {
+                fetch(`/excluir_usuario/${userId}`, {
+                    method: 'POST',  // Usando POST, mas com _method=DELETE
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams({
+                        '_method': 'DELETE'  // Passando o método DELETE via parâmetro
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Usuário excluído!');
+                        location.reload(); // Recarrega a página após exclusão
+                    } else {
+                        alert('Erro ao excluir o usuário.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Erro ao excluir o usuário.');
+                });
+            }
+        }
+    </script>
+</head>
+<body class="dashboard-page">
+        <!-- Inclui o menu -->
+    {% include 'menu.html' %}
+
+    <!-- Content -->
+    <div class="content">
+        <h2>Usuários Cadastrados</h2>
+
+        <!-- Botão para Novo Usuário -->
+        <a href="{{ url_for('cadastro_usuario') }}" class="btn btn-new-user">Novo Usuário</a>
+
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Usuário</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.nome }}</td>
+                    <td>{{ user.usuario }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        <button class="btn btn-edit" onclick="window.location.href='/editar_usuario/{{ user.id }}'">Editar</button>
+                        <button class="btn btn-delete" onclick="deleteUser({{ user.id }})">Excluir</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

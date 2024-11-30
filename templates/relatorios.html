@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/relatorios.css') }}">
+</head>
+<body class="dashboard-page">
+    <!-- Inclui o menu -->
+    {% include 'menu.html' %}
+
+    <div class="content">
+        <h2>Relatórios</h2>
+        <p>Aqui você pode visualizar os relatórios do sistema. Utilize os filtros abaixo para personalizar sua busca.</p>
+
+        <!-- Formulário de filtros -->
+        <form method="POST" class="form-filtros">
+            <div class="form-group">
+                <label for="data_inicio">Data Início</label>
+                <input type="date" id="data_inicio" name="data_inicio">
+            </div>
+
+            <div class="form-group">
+                <label for="data_fim">Data Fim</label>
+                <input type="date" id="data_fim" name="data_fim">
+            </div>
+
+            <!-- Filtro de Categoria -->
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <select id="categoria" name="categoria">
+                    <option value="">Selecione...</option>
+                    <option value="Consumíveis">Consumíveis</option>
+                    <option value="Reutilizáveis">Reutilizáveis</option>
+                    <option value="Patrimônio">Patrimônio</option>
+                </select>
+            </div>
+
+            <!-- Filtro de Produto -->
+            <div class="form-group">
+                <label for="produto">Produto</label>
+                <select id="produto" name="produto">
+                    <option value="">Selecione...</option>
+                    {% for produto in produtos %}
+                        <option value="{{ produto[0] }}">{{ produto[0] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Filtro de Tipo (Entrada ou Saída) -->
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo" name="tipo">
+                    <option value="">Selecione...</option>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit">Gerar Relatório</button>
+        </form>
+
+        <!-- Resultados do relatório -->
+        <div class="resultado-relatorio">
+            <h3>Resultados</h3>
+            <table class="tabela-relatorio">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for registro in registros %}
+                    <tr>
+                        <td>{{ registro.id }}</td>
+                        <td>{{ registro.data }}</td>
+                        <td>{{ registro.categoria }}</td>
+                        <td>{{ registro.status }}</td>
+                        <td>
+                            <a href="{{ url_for('visualizar_relatorio', id=registro.id) }}" class="btn-acao">Visualizar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- menu.html -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}"> <!-- Inclusão do CSS específico do menu -->
+
+<div class="sidebar">
+    <h3>{{ user_name }}</h3>  <!-- Exibe o nome do usuário -->
+    <ul>
+        <li><a href="/movimentacao">Movimentação</a></li>
+        <li><a href="/relatorios">Relatórios</a></li>
+        {% if session.get('user_tipo') == 'admin' %}
+        <li><a href="/usuarios">Usuários</a></li>
+        {% endif %}
+        <li><a href="/logout">Sair</a></li>
+    </ul>
+</div>

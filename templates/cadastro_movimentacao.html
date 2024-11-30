@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Movimentação</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}"> <!-- Incluir o CSS do menu -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_movimentacao.css') }}"> <!-- Novo arquivo CSS -->
+    <script>
+        // Função para calcular o valor total (valor unidade * quantidade)
+        function calcularValorTotal() {
+            const valorUnidade = parseFloat(document.getElementById('valor_unidade').value);
+            const quantidade = parseFloat(document.getElementById('quantidade').value);
+            const valorTotalField = document.getElementById('valor_total');
+
+            if (!isNaN(valorUnidade) && !isNaN(quantidade)) {
+                valorTotalField.value = (valorUnidade * quantidade).toFixed(2);
+            } else {
+                valorTotalField.value = '';
+            }
+        }
+
+        // Chamar a função quando o valor unidade ou quantidade mudar
+        window.onload = function() {
+            document.getElementById('valor_unidade').addEventListener('input', calcularValorTotal);
+            document.getElementById('quantidade').addEventListener('input', calcularValorTotal);
+        }
+    </script>
+</head>
+<body>
+    <!-- Incluindo o menu -->
+    {% include 'menu.html' %}
+
+    <div class="content">
+        <h2>Cadastro Movimentação</h2>
+        <form method="POST" class="form-cadastro">
+
+            <!-- Novo campo Data Compra -->
+            <div class="form-group">
+                <label for="data_compra">Data Compra</label>
+                <input type="date" name="data_compra" id="data_compra" required>
+            </div>
+            <!-- Novo campo Tipo (Entrada ou Saída) -->
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select name="tipo" id="tipo" required>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Saida">Saída</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria" required>
+                    <option value="Consumíveis">Consumíveis</option>
+                    <option value="Reutilizáveis">Reutilizáveis</option>
+                    <option value="Patrimônio">Patrimônio</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="produto">Produto</label>
+                <input type="text" name="produto" id="produto" required>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <input type="text" name="marca" id="marca" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_medida">Tipo Medida</label>
+                <select name="tipo_medida" id="tipo_medida" required>
+                    <option value="Kg">Kg</option>
+                    <option value="Litro">Litro</option>
+                    <option value="Unid">Unid</option>
+                    <option value="Pacote">Pacote</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="medida">Medida</label>
+                <input type="number" name="medida" id="medida" step="0.001" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade</label>
+                <input type="number" name="quantidade" id="quantidade" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_unidade">Valor Unidade (R$)</label>
+                <input type="number" name="valor_unidade" id="valor_unidade" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_total">Valor Total (R$)</label>
+                <input type="text" name="valor_total" id="valor_total" readonly>
+            </div>
+
+            <button type="submit" class="btn-submit">Cadastrar</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+/* Estilos gerais para a página de movimentações */
+body.dashboard-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar (menu lateral) */
+.sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar h3 {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #007bff;
+}
+
+/* Conteúdo principal */
+.content {
+    margin-left: 260px;
+    padding: 40px;
+    background-color: #fff;
+    width: calc(100% - 260px);
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f1f1f1;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo dos links */
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo do botão Excluir */
+button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #f44336;
+    color: white;
+}
+
+button:hover {
+    background-color: #e53935;
+}
+
+/* Estilo do botão de nova movimentação */
+.btn-new-entry {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-new-entry:hover {
+    background-color: #45a049;
+}
+
+/* Estilo do botão de nova usuario */
+.btn-new-user {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-new-entry:hover {
+    background-color: #45a049;
+}
+
+/* Estilo do botão Editar */
+.btn-edit {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #2196F3; /* Azul */
+    color: white;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background-color: #1976D2; /* Azul mais escuro */
+}

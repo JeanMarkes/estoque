@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+</head>
+<body>
+    <h1>Movimentações de Estoque</h1>
+    <a href="/cadastro">Cadastrar novo item</a>
+    <table border="1">
+        <tr>
+            <th>Produto</th>
+            <th>Marca</th>
+            <th>Quantidade</th>
+            <th>Valor Total</th>
+            <th>Tipo</th>
+            <th>Ações</th>
+        </tr>
+        {% for item in movimentacoes %}
+        <tr>
+            <td>{{ item.produto }}</td>
+            <td>{{ item.marca }</td>
+            <td>{{ item.quantidade }}</td>
+            <td>{{ item.valor_total }}</td>
+            <td>{{ item.tipo }}</td>
+            <td>
+                <a href="/cadastro/{{ item.id }}">Editar</a>
+                <a href="/excluir/{{ item.id }}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

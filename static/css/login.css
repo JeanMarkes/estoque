@@ -1,0 +1,46 @@
+/* Estilos para a página de login */
+body.login-page {
+    font-family: Arial, sans-serif;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+input {
+    width: 92%;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

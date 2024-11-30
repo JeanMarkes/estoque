@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentações</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body class="dashboard-page">
+    <!-- Inclui o menu -->
+    {% include 'menu.html' %}
+
+    <div class="content">
+        <h2>Movimentações</h2>
+        <a href="{{ url_for('cadastro_movimentacao') }}" class="btn-new-entry">Nova Movimentação</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th>Produto</th>
+                    <th>Medida</th>
+                    <th>Qtd</th>
+                    <th>Valor Und.</th>
+                    <th>Valor Total</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for movimentacao in movimentacoes %}
+                <tr>
+                    <!-- Formatação da data no formato dd/mm/yyyy -->
+                    <td>
+                        {% if movimentacao.data_compra %}
+                            {{ movimentacao.data_compra[8:10] + '/' + movimentacao.data_compra[5:7] + '/' + movimentacao.data_compra[0:4] }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>{{ movimentacao.categoria }}</td>
+                    <td>{% if movimentacao.tipo %}
+                            {{ movimentacao.tipo }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                    <td>{{ movimentacao.produto }}</td>
+                    <td>{{ movimentacao.medida }}  {{ movimentacao.tipo_medida }}</td>
+                    <td>{{ movimentacao.quantidade }}</td>
+                    <td>R$ {{ '%.2f' % movimentacao.valor_unidade }}</td>
+                    <td>R$ {{ '%.2f' % movimentacao.valor_total }}</td>
+                    <td>
+                        <a href="{{ url_for('editar_movimentacao', id=movimentacao.id) }}" class="btn-edit">Editar</a>
+                        <form action="{{ url_for('excluir_movimentacao', id=movimentacao.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn-delete">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

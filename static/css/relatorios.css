@@ -1,0 +1,76 @@
+/* Estilos para a página de relatórios */
+.form-filtros {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.btn-submit:hover {
+    background-color: #218838;
+}
+
+.tabela-relatorio {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabela-relatorio th,
+.tabela-relatorio td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.tabela-relatorio th {
+    background-color: #f2f2f2;
+}
+
+.btn-acao {
+    padding: 6px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-acao:hover {
+    background-color: #0056b3;
+}

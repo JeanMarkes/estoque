@@ -1,0 +1,57 @@
+/* menu.css */
+
+/* Estilo para a sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh; /* 100% da altura da tela */
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    position: fixed; /* Fixa o menu na lateral */
+    top: 0;
+    left: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para o nome do usuário */
+.sidebar h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: none;
+}
+
+/* Estilo para a lista de links */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Estilo para cada item de menu */
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+/* Estilo para os links */
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre os links */
+.sidebar ul li a:hover {
+    background-color: #575757;
+}
+
+/* Estilo para o link de 'Sair' */
+.sidebar ul li a.logout {
+    background-color: #e74c3c; /* Cor de fundo vermelha para o logout */
+}
+
+.sidebar ul li a.logout:hover {
+    background-color: #c0392b; /* Cor de fundo mais escura ao passar o mouse */
+}

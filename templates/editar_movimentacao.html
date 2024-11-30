@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Movimentação</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro_movimentacao.css') }}">
+    <script>
+        function calcularValorTotal() {
+            const valorUnidade = parseFloat(document.getElementById('valor_unidade').value);
+            const quantidade = parseFloat(document.getElementById('quantidade').value);
+            const valorTotalField = document.getElementById('valor_total');
+
+            if (!isNaN(valorUnidade) && !isNaN(quantidade)) {
+                valorTotalField.value = (valorUnidade * quantidade).toFixed(2);
+            } else {
+                valorTotalField.value = '';
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById('valor_unidade').addEventListener('input', calcularValorTotal);
+            document.getElementById('quantidade').addEventListener('input', calcularValorTotal);
+        }
+    </script>
+</head>
+<body>
+    {% include 'menu.html' %}
+
+    <div class="content">
+        <h2>Editar Movimentação</h2>
+        <form method="POST" class="form-cadastro">
+            <div class="form-group">
+                <label for="data_compra">Data Compra</label>
+                <input type="date" name="data_compra" id="data_compra" value="{{ movimentacao[8] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select name="tipo" id="tipo" required>
+                    <option value="Entrada" {% if movimentacao[9] == 'Entrada' %}selected{% endif %}>Entrada</option>
+                    <option value="Saida" {% if movimentacao[9] == 'Saida' %}selected{% endif %}>Saída</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoria</label>
+                <select name="categoria" id="categoria" required>
+                    <option value="Consumíveis" {% if movimentacao[10] == 'Consumíveis' %}selected{% endif %}>Consumíveis</option>
+                    <option value="Reutilizáveis" {% if movimentacao[10] == 'Reutilizáveis' %}selected{% endif %}>Reutilizáveis</option>
+                    <option value="Patrimônio" {% if movimentacao[10] == 'Patrimônio' %}selected{% endif %}>Patrimônio</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="produto">Produto</label>
+                <input type="text" name="produto" id="produto" value="{{ movimentacao[1] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="marca">Marca</label>
+                <input type="text" name="marca" id="marca" value="{{ movimentacao[2] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_medida">Tipo Medida</label>
+                <select name="tipo_medida" id="tipo_medida" required>
+                    <option value="Kg" {% if movimentacao[3] == 'Kg' %}selected{% endif %}>Kg</option>
+                    <option value="Litro" {% if movimentacao[3] == 'Litro' %}selected{% endif %}>Litro</option>
+                    <option value="Unid" {% if movimentacao[3] == 'Unid' %}selected{% endif %}>Unid</option>
+                    <option value="Pacote" {% if movimentacao[3] == 'Pacote' %}selected{% endif %}>Pacote</option>
+                    <option value="Outros" {% if movimentacao[3] == 'Outros' %}selected{% endif %}>Outros</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="medida">Medida</label>
+                <input type="number" name="medida" id="medida" value="{{ movimentacao[4] }}" step="0.001" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade</label>
+                <input type="number" name="quantidade" id="quantidade" value="{{ movimentacao[5] }}" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_unidade">Valor Unidade (R$)</label>
+                <input type="number" name="valor_unidade" id="valor_unidade" value="{{ movimentacao[6] }}" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="valor_total">Valor Total (R$)</label>
+                <input type="text" name="valor_total" id="valor_total" value="{{ movimentacao[7] }}" readonly>
+            </div>
+            <button type="submit" class="btn-submit">Salvar alterações</button>
+        </form>
+    </div>
+</body>
+</html>

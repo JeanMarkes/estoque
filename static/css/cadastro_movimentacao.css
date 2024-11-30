@@ -1,0 +1,82 @@
+/* Estilo para o formulário de cadastro */
+body {
+    font-family: 'Arial', sans-serif; /* Substitua pela fonte que está sendo usada no menu */
+    color: #333; /* Defina a cor do texto */
+    font-size: 1rem; /* Tamanho de fonte padrão */
+}
+
+.form-cadastro {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilo específico para o campo select (combo box) */
+select {
+    -webkit-appearance: none; /* Remove a aparência padrão no Safari */
+    -moz-appearance: none; /* Remove a aparência padrão no Firefox */
+    appearance: none; /* Remove a aparência padrão no Chrome e outros browsers */
+    background-color: #fff; /* Cor de fundo */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zY2h...'); /* Imagem de seta customizada */
+    background-position: right 10px center; /* Coloca a seta à direita */
+    background-repeat: no-repeat; /* Não repete a seta */
+    background-size: 12px; /* Tamanho da seta */
+    padding-right: 30px; /* Espaço para a seta à direita */
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button.btn-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.btn-submit:hover {
+    background-color: #218838;
+}
+
+/* Adiciona uma margem na parte superior */
+.content h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.content {
+    padding: 20px;
+}
